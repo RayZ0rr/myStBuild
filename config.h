@@ -179,6 +179,7 @@ static uint forcemousemod = ShiftMask;
  */
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument      release alt */
+	{ XK_NO_MOD,            Button2, selpaste,      {.i =  0} },
 	{ ShiftMask,            Button4, zoom,           {.f =  +1} },
 	{ ShiftMask,            Button5, zoom,           {.f =  -1} },
 	{ XK_NO_MOD,            Button4, ttysend,        {.s = "\033[1;3A"}, 0, -1 },
