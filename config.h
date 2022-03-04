@@ -19,7 +19,8 @@ static int borderpx = 2;
 static char *shell = "/bin/bash";
 char *utmp = NULL;
 /* scroll program: to enable use a string like "scroll" */
-char *scroll = "scroll" ;
+// char *scroll = "scroll" ;
+char *scroll = NULL ;
 char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";
 
 /* identification sequence returned in DA and DECID */
@@ -209,15 +210,17 @@ static uint forcemousemod = ShiftMask;
  */
 static MouseShortcut mshortcuts[] = {
   /* mask                 button   function        argument      release alt */
-  { XK_NO_MOD,            Button2, selpaste,      {.i =  0} },
+  { XK_ANY_MOD,           Button4, kscrollup,      {.i = 1},		0, /* !alt */ -1 },
+  { XK_ANY_MOD,           Button5, kscrolldown,    {.i = 1},		0, /* !alt */ -1 },
+  { XK_ANY_MOD,           Button2, selpaste,       {.i = 0},           1 },
   { ShiftMask,            Button4, zoom,           {.f =  +1} },
   { ShiftMask,            Button5, zoom,           {.f =  -1} },
-  { XK_NO_MOD,            Button4, ttysend,        {.s = "\033[1;3A"}, 0, -1 },
-  { XK_NO_MOD,            Button4, ttysend,        {.s = "\031"} },
-  { XK_NO_MOD,            Button5, ttysend,        {.s = "\033[1;3B"}, 0, -1 },
-  { XK_NO_MOD,            Button5, ttysend,        {.s = "\005"} },
-  { XK_ANY_MOD,           Button4, zoom,           {.f =  +1} },
-  { XK_ANY_MOD,           Button5, zoom,           {.f =  -1} },
+  // { XK_NO_MOD,            Button4, ttysend,        {.s = "\033[1;3A"}, 0, -1 },
+  // { XK_NO_MOD,            Button4, ttysend,        {.s = "\031"} },
+  // { XK_NO_MOD,            Button5, ttysend,        {.s = "\033[1;3B"}, 0, -1 },
+  // { XK_NO_MOD,            Button5, ttysend,        {.s = "\005"} },
+  // { XK_ANY_MOD,           Button4, zoom,           {.f =  +1} },
+  // { XK_ANY_MOD,           Button5, zoom,           {.f =  -1} },
 };
 
 /* Internal keyboard shortcuts. */
